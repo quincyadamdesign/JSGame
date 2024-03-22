@@ -1,16 +1,94 @@
 <html>
+    <head>
+        <title>Paper, Rock, Scissors</title>
+        <body>
+            <script>const getUserChoice = userInput => {
+                userInput = userInput.toLowerCase();
+                if (userInput === 'rock' || userInput === 'scissors' || userInput === 'paper' || userInput == 'bomb') {
+                  return userInput;
+                } else {
+                 console.log('Error, please type: rock, paper, scissors.');
+                }
+              }
+              
+              
+              const getComputerChoice = () => {
+                const randomNumber = Math.floor(Math.random() * 3);
+              
+              switch (randomNumber) {
+                case 0:
+                return 'rock';
+                case 1:
+                return 'paper';
+                case 2:
+                return 'scissors';
+              }
+              };
+              
+              const determineWinner = (userChoice, computerChoice) => {
+                if (userChoice === computerChoice) {
+                  return 'This game is a tie!';
+                }
+                if (userChoice === 'rock') {
+                  if (computerChoice === 'paper') {
+                    return "Sorry, computer won!";
+                  } else {
+                    return "Congratulations, you won!";
+                  }
+                }
+              
+              if (userChoice === 'paper') {
+                if (computerChoice === 'scissors'){
+                  return "Sorry, computer won!";
+                } else {
+                  return "Congratulations, you won!";
+                }
+              }
+              
+              
+              if (userChoice === 'scissors') {
+                if (computerChoice === 'rock'){
+                  return "Sorry, computer won!";
+                } else {
+                  return "Congratulations, you won!";
+                }
+              }
+              
+              if (userChoice === 'bomb') {
+                return "Congratulations, you won!";
+              }
+              
+              };
+              
+              //console.log(determineWinner('rock','scissors'));
+              //console.log(determineWinner('paper','scissors'));
+              //console.log(determineWinner('rock','rock'));
+              
+              
+              const playGame = () => {
+                const userChoice = getUserChoice('paper');
+                const computerChoice = getComputerChoice();
 
-<body>
-  <h1>JS Game - Rock, Paper, or Scissors</h1>
-  <p>Rock paper scissors is a classic two player game. Each player chooses either rock, paper, or scissors. The items are compared, and whichever player chooses the more powerful item wins.</p>
+                console.log('You threw: ' + userChoice);
+                document.getElementById("userChoice").innerHTML = userChoice;
 
-<p>The possible outcomes are:</p>
-<ul>
-<li>Rock destroys scissors.</li>
-<li>Scissors cut paper.</li>
-<li>Paper covers rock.</li>
-<li>If there’s a tie, then the game ends in a draw.</li>
-</ul>
-</body>
+                console.log('The computer threw: ' + computerChoice);
+                document.getElementById("computerChoice").innerHTML = computerChoice;
+                
+                console.log(determineWinner(userChoice, computerChoice));
+                document.getElementById("winner").innerHTML = determineWinner(userChoice, computerChoice);
 
+              };
+              playGame()
+              
+              </script>
+              
+              <button onclick="playGame()">Play</button>
+              <p>You threw: <span id="userChoice"></span></p>
+              <p>The computer threw: <span id="computerChoice"></span></p>
+              <p><span id="winner"></span></p>
+
+
+        </body>
+    </head>
 </html>
