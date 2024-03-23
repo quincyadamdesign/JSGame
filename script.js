@@ -1,6 +1,6 @@
 const getUserChoice = userInput => {
                 userInput = userInput.toLowerCase();
-                if (userInput === 'rock' || userInput === 'scissors' || userInput === 'paper' || userInput == 'bomb') {
+                if (userInput === 'rock' || userInput === 'scissors' || userInput === 'paper') {
                   return userInput;
                 } else {
                  console.log('Error, please type: rock, paper, scissors.');
@@ -48,10 +48,6 @@ const getUserChoice = userInput => {
                 } else {
                   return "Congratulations, you won!";
                 }
-              }
-              
-              if (userChoice === 'bomb') {
-                return "Congratulations, you won!";
               }
               
               };
